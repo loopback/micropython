@@ -27,6 +27,14 @@
 // Take PYBD_SF2 as base configuration
 #include "boards/PYBD_SF2/mpconfigboard.h"
 
+// Change floating-point representation to native type to allow for use in
+// interrupts
+#define MICROPY_OBJ_REPR            (MICROPY_OBJ_REPR_C)
+#define UINT_FMT "%u"
+#define INT_FMT "%d"
+typedef int mp_int_t; // must be pointer size
+typedef unsigned int mp_uint_t; // must be pointer size
+
 #undef MICROPY_HW_BOARD_NAME
 #undef MICROPY_HW_MCU_NAME
 #undef MICROPY_HW_CLK_PLLM
